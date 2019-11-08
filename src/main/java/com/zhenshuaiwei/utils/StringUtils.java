@@ -157,7 +157,7 @@ public class StringUtils {
 	
 
 	public static boolean isNumber(String str){
-		return Pattern.matches("^//d*$",str);
+		return Pattern.matches("^\\-?\\d+(\\.\\d+)?$",str);
 	}
 	
 	/**

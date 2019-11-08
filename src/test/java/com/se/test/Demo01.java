@@ -67,5 +67,13 @@ public class Demo01 {
 //		sss
 		int age = DateUtil.getAge(new Date("Sat,12 Aug 2001 13:30:00 GMT"));
 		System.out.println(age);
+		int futureDays = DateUtil.futureDays(new Date("Sat,12 Aug 2019 13:30:00 GMT"));
+		System.out.println(futureDays);
+	}
+	
+	@Test
+	public void testIsNumber() {
+		boolean number = StringUtils.isNumber("-5.0.1");
+		System.out.println(number);
 	}
 }
