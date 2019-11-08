@@ -60,4 +60,12 @@ public class Demo01 {
 		
 		
 	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testDateAge() throws Throwable {
+//		sss
+		int age = DateUtil.getAge(new Date("Sat,12 Aug 2001 13:30:00 GMT"));
+		System.out.println(age);
+	}
 }
