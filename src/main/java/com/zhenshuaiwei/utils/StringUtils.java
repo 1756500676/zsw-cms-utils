@@ -155,8 +155,26 @@ public class StringUtils {
 	
 	
 	
+
+	public static boolean isNumber(String str){
+		return Pattern.matches("^//d*$",str);
+	}
 	
-	
+	/**
+	 * 
+	 * @Title: getPlaceholderValue 
+	 * @Description: 给定的正则表达式去匹配字符串
+	 * @param src
+	 * @param regex
+	 * @return
+	 * @return: String
+	 * @date: 2019年11月8日上午9:25:55
+	 */
+	public static String getPlaceholderValue(String src, String regex){
+		Pattern compile = Pattern.compile(regex);
+		String string = compile.matcher(src).group();
+		return string;
+	}
 	
 	
 	

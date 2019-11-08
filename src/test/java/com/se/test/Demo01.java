@@ -13,6 +13,8 @@ package com.se.test;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -43,5 +45,19 @@ public class Demo01 {
 	public void testDate() {
 		int compare = DateUtil.compare(new Date(2000), new Date(1000));
 		System.out.println(compare);
+	}
+	
+	@Test
+	public void testUrl() {
+		String str = "http://news.cnstock.com/news,yw-201908-4413224.htm";
+		Pattern p = Pattern.compile("441\\d*");
+		Matcher m = p.matcher(str);
+		boolean find = m.find();
+//		^((?!不想包含的字符串).)*$
+		int start = m.start();
+		System.out.println(m.group());
+		System.out.println(find);
+		
+		
 	}
 }
