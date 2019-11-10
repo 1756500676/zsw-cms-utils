@@ -28,6 +28,16 @@ public class DateUtil {
 	 */
 	static final long millionSecondsPerDay = 1000 * 60 * 60 * 24;
 
+	/**
+	 * 
+	 * @Title: compare 
+	 * @Description: 判断两个日期那个大,.0代表第一个大,1代表第二个
+	 * @param date1
+	 * @param date2
+	 * @return
+	 * @return: int
+	 * @date: 2019年11月10日下午6:31:21
+	 */
 	public static int compare(Date date1,Date date2) {
 		if (date1 == null && date2 == null) {
 			throw new RuntimeException("参数不可为空");
@@ -35,6 +45,16 @@ public class DateUtil {
 		return date1.compareTo(date2);
 	}
 	
+	/**
+	 * 
+	 * @Title: getAge 
+	 * @Description: 根据生日获取年龄
+	 * @param birthDay
+	 * @return
+	 * @throws Exception
+	 * @return: int
+	 * @date: 2019年11月10日下午6:32:07
+	 */
     public static  int getAge(Date birthDay) throws Exception {  
         Calendar cal = Calendar.getInstance();  
         if (cal.before(birthDay)) {  
@@ -78,10 +98,33 @@ public class DateUtil {
 		}
     }
     
-    public static boolean isToday(Date date) {
+    /**
+     * 
+     * @Title: isToday 
+     * @Description: 判断是否是今天
+     * @param date
+     * @return
+     * @return: boolean
+     * @date: 2019年11月10日下午6:32:35
+     */
+    public static boolean isCurrentToday(Date date) {
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
     	return sdf.format(date).equals(sdf.format(new Date()));
     }
+    
+    /**
+	 * 3.4.4判断是否为当月
+	 * @param date
+	 * @return
+	 */
+	public static boolean isCurrentMonth(Date date) {
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
+		String dateStr = simpleDateFormat.format(date);
+		String todayStr = simpleDateFormat.format(new Date());
+		return dateStr.equals(todayStr);
+		
+	}
     /**
 	 * 判断是否在本周
 	 * @param date
@@ -121,7 +164,16 @@ public class DateUtil {
 
 	}
 	
-	public static Date getBOM(Date date) {
+	/**
+	 * 
+	 * @Title: getBOM 
+	 * @Description: 获取这个月的第一天
+	 * @param date
+	 * @return
+	 * @return: Date
+	 * @date: 2019年11月10日下午6:32:51
+	 */
+	public static Date getMonthStart(Date date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(calendar.DAY_OF_MONTH, 1);
@@ -131,7 +183,16 @@ public class DateUtil {
 		return calendar.getTime();
 	}
 	
-	public static Date getEOM(Date date) {
+	/**
+	 * 
+	 * @Title: getEOM 
+	 * @Description: 获取这个月的最后一天
+	 * @param date
+	 * @return
+	 * @return: Date
+	 * @date: 2019年11月10日下午6:33:12
+	 */
+	public static Date getMonthEnd(Date date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.add(calendar.MONTH, 1);

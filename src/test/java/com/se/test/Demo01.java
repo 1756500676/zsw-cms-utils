@@ -34,11 +34,11 @@ public class Demo01 {
 //		要求必须为true不会报错,否则会报错---断言
 		assertTrue(StringUtils.isBlank(null));
 		assertTrue(StringUtils.isTelphone("15131027368"));
-		String randomStr = StringUtils.getRandomStr(10);
+		String randomStr = StringUtils.getRandomEnglishStr(10);
 		System.out.println(randomStr);
-		String randomStrAndNumber = StringUtils.getRandomStrAndNumber(10);
+		String randomStrAndNumber = StringUtils.getRandomStr(10);
 		System.out.println(randomStrAndNumber);
-		String randomChinese = StringUtils.GetRandomChinese(5);
+		String randomChinese = StringUtils.getRandomChinese(5);
 		System.out.println(randomChinese);
 	}
 	@Test
@@ -73,7 +73,7 @@ public class Demo01 {
 	
 	@Test
 	public void testIsNumber() {
-		boolean number = StringUtils.isNumber("-5.0.1");
+		boolean number = StringUtils.isNumber("-5.0.1",true);
 		System.out.println(number);
 	}
 }

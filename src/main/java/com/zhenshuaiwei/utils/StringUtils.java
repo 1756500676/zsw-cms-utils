@@ -77,13 +77,13 @@ public class StringUtils {
 	/**
 	 * 
 	 * @Title: getRandomStr 
-	 * @Description: 获取随机字符串
+	 * @Description: 获取随机大小写英文字符串
 	 * @param n
 	 * @return
 	 * @return: String
 	 * @date: 2019年11月7日下午4:10:05
 	 */
-	public static String getRandomStr(int n) {
+	public static String getRandomEnglishStr(int n) {
 		StringBuffer sb = new StringBuffer();
 		Random random = new Random();
 		for (int i = 0; i < n; i++) {
@@ -99,13 +99,13 @@ public class StringUtils {
 	/**
 	 * 
 	 * @Title: getRandomStrAndNumber 
-	 * @Description: 获取随机中文字符串
+	 * @Description: 获取随机大小写英文和数字字符串
 	 * @param n
 	 * @return
 	 * @return: String
 	 * @date: 2019年11月7日下午4:21:45
 	 */
-	public static String getRandomStrAndNumber(int n) {
+	public static String getRandomStr(int n) {
 		StringBuffer sb = new StringBuffer();
 		Random random = new Random();
 		for (int i = 0; i < n; i++) {
@@ -126,7 +126,16 @@ public class StringUtils {
 		return sb.toString();
 	}
 	
-	public static String GetRandomChinese(int n) {
+	/**
+	 * 
+	 * @Title: GetRandomChinese 
+	 * @Description: 获取随机中文字符串
+	 * @param n
+	 * @return
+	 * @return: String
+	 * @date: 2019年11月10日下午7:02:35
+	 */
+	public static String getRandomChinese(int n) {
         int hightPos; //
         int lowPos;
         Random random = new Random();
@@ -156,8 +165,22 @@ public class StringUtils {
 	
 	
 
-	public static boolean isNumber(String str){
-		return Pattern.matches("^\\-?\\d+(\\.\\d+)?$",str);
+	/**
+	 * 
+	 * @Title: isNumber 
+	 * @Description: 判断是否为数字,包括小数,可选择是否允许负数
+	 * @param str
+	 * @return
+	 * @return: boolean
+	 * @date: 2019年11月10日下午7:06:31
+	 */
+	public static boolean isNumber(String str,boolean allowMiuns){
+		if (allowMiuns) {
+			return Pattern.matches("^\\-?\\d+(\\.\\d+)?$",str);
+		}else {
+			return Pattern.matches("^\\d+(\\.\\d+)?$",str);
+		}
+		
 	}
 	
 	/**
@@ -170,9 +193,9 @@ public class StringUtils {
 	 * @return: String
 	 * @date: 2019年11月8日上午9:25:55
 	 */
-	public static String getPlaceholderValue(String src, String regex){
+	public static String getPlaceholderValue(String str, String regex){
 		Pattern compile = Pattern.compile(regex);
-		String string = compile.matcher(src).group();
+		String string = compile.matcher(str).group();
 		return string;
 	}
 	
