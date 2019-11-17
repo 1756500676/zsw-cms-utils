@@ -10,6 +10,7 @@
  */
 package com.zhenshuaiwei.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -125,6 +126,23 @@ public class StringUtils {
 		}
 		return sb.toString();
 	}
+	/**
+	 * 
+	 * @Title: getRandomNumber 
+	 * @Description: 获取随机数字
+	 * @param n
+	 * @return
+	 * @return: String
+	 * @date: 2019年11月16日上午8:51:50
+	 */
+	public static String getRandomNumber(int n) {
+		StringBuffer sb = new StringBuffer();
+		Random random = new Random();
+		for (int i = 0; i < n; i++) {
+			sb.append(random.nextInt(9));
+		}
+		return sb.toString();
+	}
 	
 	/**
 	 * 
@@ -150,7 +168,7 @@ public class StringUtils {
         	b[1] = (Integer.valueOf(lowPos)).byteValue();
         	
         	try {
-        		str = new String(b, "GBK");
+        		str = new String(b, "UTF-8");
         	} catch (Exception e) {
         		e.printStackTrace();
         		System.out.println("错误");
@@ -160,6 +178,69 @@ public class StringUtils {
 		}
 //        return str.charAt(0);
         return sb.toString();
+	}
+	
+	public static String getRandomJianHan(int len)
+    {
+        String ret="";
+          for(int i=0;i<len;i++){
+              String str = null;
+              int hightPos, lowPos; // 定义高低位
+              Random random = new Random();
+              hightPos = (176 + Math.abs(random.nextInt(39))); //获取高位值
+              lowPos = (161 + Math.abs(random.nextInt(93))); //获取低位值
+              byte[] b = new byte[2];
+              b[0] = (new Integer(hightPos).byteValue());
+              b[1] = (new Integer(lowPos).byteValue());
+              try
+              {
+                  str = new String(b, "GBk"); //转成中文
+              }
+              catch (UnsupportedEncodingException ex)
+              {
+                  ex.printStackTrace();
+              }
+               ret+=str;
+          }
+      return ret;
+    }
+	
+	/**
+	 * 
+	 * @Title: generateChineseName 
+	 * @Description: 获取随机姓名
+	 * @return
+	 * @return: String
+	 * @date: 2019年11月16日上午8:38:46
+	 */
+	public static String generateChineseName() {
+		int hightPos; //
+		int lowPos;
+		Random random = new Random();
+		StringBuffer sb = new StringBuffer();
+		String[] arr = {"赵 ","钱","孙","李","周","吴","郑 ","王","冯","陈","褚","杨","朱","许","何","吕","张","孔","曹","严","华","金","魏"};
+		sb.append(arr[random.nextInt(arr.length - 1)]);
+		for (int i = 0; i < 2; i++) {
+			String str = "";
+			hightPos = (176 + Math.abs(random.nextInt(39)));
+			lowPos = (161 + Math.abs(random.nextInt(93)));
+			
+			byte[] b = new byte[2];
+			b[0] = (Integer.valueOf(hightPos)).byteValue();
+			b[1] = (Integer.valueOf(lowPos)).byteValue();
+			
+			try {
+				str = new String(b, "GBK");
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("错误");
+			}
+			
+			sb.append(str);
+		}
+		
+//        return str.charAt(0);
+		return sb.toString();
 	}
 	
 	
