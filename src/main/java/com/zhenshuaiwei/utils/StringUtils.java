@@ -168,7 +168,7 @@ public class StringUtils {
         	b[1] = (Integer.valueOf(lowPos)).byteValue();
         	
         	try {
-        		str = new String(b, "UTF-8");
+        		str = new String(b, "GBK");
         	} catch (Exception e) {
         		e.printStackTrace();
         		System.out.println("错误");
@@ -279,6 +279,26 @@ public class StringUtils {
 		String string = compile.matcher(str).group();
 		return string;
 	}
+	
+	  
+	/**
+	 * 
+	 * @Title: getMail 
+	 * @Description: 随机生成邮箱
+	 * @return
+	 * @return: String
+	 * @date: 2019年12月7日上午9:21:45
+	 */
+    public static String getMail(int minSize,int maxSize){
+        String [] last = {"@qq.com", "@gmail.com", "@163.com", "@sina.com", "@hotmail.com", "@sohu.com"};
+        StringBuffer sb = new StringBuffer();
+        // 3~20长度，包含3及20
+        Random random = new Random();
+        int length = minSize + random.nextInt(maxSize - minSize);
+        sb.append(getRandomStr(length));
+        sb.append(last[random.nextInt(last.length)]);
+        return sb.toString();
+    }
 	
 	
 	

@@ -8,7 +8,7 @@
  * @date: 2019年11月10日 下午6:53:22 
  * @version: V1.0   
  */
-package com.zhenshuaiwei.utils;
+package com.zhenshuaiwei.fileutils;
 
 /** 
  * @ClassName: FileSize 

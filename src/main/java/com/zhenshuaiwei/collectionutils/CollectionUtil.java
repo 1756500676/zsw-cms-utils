@@ -8,7 +8,7 @@
  * @date: 2019年11月11日 上午8:53:03 
  * @version: V1.0   
  */
-package com.zhenshuaiwei.utils;
+package com.zhenshuaiwei.collectionutils;
 
 import java.util.Collection;
 

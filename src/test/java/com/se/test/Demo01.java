@@ -12,13 +12,16 @@ package com.se.test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.junit.Test;
 
-import com.zhenshuaiwei.utils.DateUtil;
+import com.zhenshuaiwei.dateutils.DateUtil;
+import com.zhenshuaiwei.fileutils.FileUtil;
+import com.zhenshuaiwei.fileutils.UploadFile;
 import com.zhenshuaiwei.utils.StringUtils;
 
 /** 
@@ -40,11 +43,6 @@ public class Demo01 {
 		System.out.println(randomStrAndNumber);
 		String randomChinese = StringUtils.getRandomChinese(5);
 		System.out.println(randomChinese);
-	}
-	@Test
-	public void testDate() {
-		int compare = DateUtil.compare(new Date(2000), new Date(1000));
-		System.out.println(compare);
 	}
 	
 	@Test
@@ -75,5 +73,20 @@ public class Demo01 {
 	public void testIsNumber() {
 		boolean number = StringUtils.isNumber("-5.0.1",true);
 		System.out.println(number);
+	}
+	
+	@Test
+	public void testName() {
+		File file = new File("d:/ssss.txt");
+		UploadFile uploadFile = UploadFile.uploadDateFile(file.getName(), "d:/zsw");
+		String newAllUrl = uploadFile.getNewAllUrl();
+		System.out.println(uploadFile.getFileName());
+		System.out.println(uploadFile.getUploadPath());
+		System.out.println(uploadFile.getNewName());
+		System.out.println(uploadFile.getSuffixName());
+		System.out.println(uploadFile.getNewAllUrl());
+		System.out.println(uploadFile.getNewUrl());
+		System.out.println(newAllUrl);
+		System.out.println(uploadFile.getNewFile().getPath());
 	}
 }

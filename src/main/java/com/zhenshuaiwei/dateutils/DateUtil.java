@@ -8,7 +8,7 @@
  * @date: 2019年11月7日 下午4:25:17 
  * @version: V1.0   
  */
-package com.zhenshuaiwei.utils;
+package com.zhenshuaiwei.dateutils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -205,17 +205,25 @@ public class DateUtil {
 	}
 	
 	
-	public static Date randomHireday2() {
-		int startYear=1950;
-		int endYear=2019;
+	/**
+	 * 
+	 * @Title: randomHireday 
+	 * @Description: 随机获取生日
+	 * @return
+	 * @return: Date
+	 * @date: 2019年12月7日上午9:28:55
+	 */
+	public static Date randomHireday(int startYear,int endYear) {
+//		int startYear=1950;
+//		int endYear=2019;
 		int year = (int)(Math.random()*(endYear-startYear+1))+startYear;	//随机年
 		int month= (int)(Math.random()*12)+1;								//随机月
 		Calendar c = Calendar.getInstance();				//创建Calendar对象
 		c.set(year, month, 0);								//设定日期
 		int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);		//获取对应年月有几天
 		int day=(int)(Math.random()*dayOfMonth+1)	;		//产生随机日
-		Date hireday=java.sql.Date.valueOf(year+"-"+month+"-"+day);	//通过valueOf方法生成Date对象
-		return hireday;
+		java.sql.Date date = java.sql.Date.valueOf(year+"-"+month+"-"+day);	//通过valueOf方法生成Date对象
+		return date;
 	}
     
 }
